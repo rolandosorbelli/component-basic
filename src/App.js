@@ -41,11 +41,18 @@ App.defaultProps = {
 }
 
 class Parent extends Component {
+  constructor(props){
+    super(props);
+  
+    this.state = {
+      animals: ["lion", "cat", "dog", "squirrel"]
+    }
+  }
   render() {
     return (
       <div>
         <h2>Just some info</h2>
-        <Child msg="I am a message in the parent" number = "123456" animals = {this.props.animals} />
+        <Child msg="I am a message in the parent" number = "123456" animals = {this.state.animals} />
       </div>
     );
   }
@@ -64,9 +71,9 @@ class Child extends Component {
         <h3>I am from child component</h3>
         <p>{this.props.msg}</p>
         <p>{this.props.number}</p>
-        <p>{this.props.animals.map((item, i) => {
-          return " "+ item
-        })}</p>
+        <div>{this.props.animals.map((item, i) => {
+          return <p key = {i}>{item}</p>
+        })}</div>
       </div>
     );
   }
