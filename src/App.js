@@ -36,7 +36,7 @@ class Body extends Component {
   }
 
   getRandomNumber(){
-    this.setState({random: Math.floor(Math.random()*10)})
+    this.setState({random: Math.floor(Math.random()*20)})
   }
 
 
@@ -52,6 +52,19 @@ class Body extends Component {
 }
 
 class Numbers extends Component {
+  componentWillMount(){
+    console.log("componentWillMount called here")
+  }
+
+  componentDidMount(){
+    console.log("componentDidMount called here")
+  }  
+
+  componentWillReceiveProps(newProps){
+    console.log("componentWillReceiveProps called here")
+  }
+
+
   render() {
     return (
       <div>
