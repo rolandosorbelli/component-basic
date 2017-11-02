@@ -18,6 +18,46 @@ class App extends Component {
         <h3>Prop string is: {this.props.propString}</h3>
         <h3>Prop object is: {this.props.propObject.obj1}</h3>
         <Parent />
+        <h1>Components Life Cycle</h1>
+        <Body />
+      </div>
+    );
+  }
+}
+
+class Body extends Component {
+  constructor(props){
+    super(props);
+  
+    this.state = {
+      random: 0
+    }
+    this.getRandomNumber = this.getRandomNumber.bind(this)
+  }
+
+  getRandomNumber(){
+    this.setState({random: Math.floor(Math.random()*10)})
+  }
+
+
+  render() {
+    return (
+      <div>
+        <button onClick={this.getRandomNumber}>Random Number</button>
+        <Numbers myNumber={this.state.random} />
+        <br />
+      </div>
+    );
+  }
+}
+
+class Numbers extends Component {
+  render() {
+    return (
+      <div>
+        <br />
+        {this.props.myNumber}
+        <br />
       </div>
     );
   }
