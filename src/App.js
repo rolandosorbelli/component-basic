@@ -46,13 +46,19 @@ class Parent extends Component {
   
     this.state = {
       animals: ["lion", "cat", "dog", "squirrel"]
-    }
+    };
+    this.handleClick = this.handleClick.bind(this);
   }
+
+  handleClick(){
+    this.setState( {animals: this.state.animals.reverse()} )
+  }
+
   render() {
     return (
       <div>
-        <h2>Just some info</h2>
-        <Child msg="I am a message in the parent" number = "123456" animals = {this.state.animals} />
+        <h2 onClick={this.handleClick}>Just some info</h2>
+        <Child msg="I am a message in the parent" number = "123456" animalsList = {this.state.animals} />
       </div>
     );
   }
@@ -71,8 +77,8 @@ class Child extends Component {
         <h3>I am from child component</h3>
         <p>{this.props.msg}</p>
         <p>{this.props.number}</p>
-        <div>{this.props.animals.map((item, i) => {
-          return <p key = {i}>{item}</p>
+        <div>{this.props.animalsList.map((item, i) => {
+          return <p key={i}>{item}</p>;
         })}</div>
       </div>
     );
